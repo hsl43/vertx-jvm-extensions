@@ -7,17 +7,25 @@ import io.vertx.reactivex.core.eventbus.EventBus
 import io.vertx.reactivex.core.eventbus.Message
 
 fun EventBus.publishJsonObject(message: Any, options: DeliveryOptions? = null): EventBus {
+    val address = message::class.java.name
+
+    val json = JsonObject.mapFrom(message)
+
     return if(options == null) {
-        this.publish(message::class.java.name, JsonObject.mapFrom(message))
+        this.publish(address, json)
     } else {
-        this.publish(message::class.java.name, JsonObject.mapFrom(message), options)
+        this.publish(address, json, options)
     }
 }
 
 fun EventBus.rxSendJsonObject(message: Any, options: DeliveryOptions? = null): Single<Message<JsonObject>> {
+    val address = message::class.java.name
+
+    val json = JsonObject.mapFrom(message)
+
     return if(options == null) {
-        this.rxSend<JsonObject>(message::class.java.name, JsonObject.mapFrom(message))
+        this.rxSend<JsonObject>(address, json)
     } else {
-        this.rxSend<JsonObject>(message::class.java.name, JsonObject.mapFrom(message), options)
+        this.rxSend<JsonObject>(address, json, options)
     }
 }
