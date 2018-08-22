@@ -25,7 +25,7 @@ class EventBusExtensionsTest : VertxTestBase() {
         super.tearDown(context)
     }
 
-    @Test fun publishJsonObject_publish_address_is_class_fqn(context: TestContext) {
+    @Test fun publishJsonObject_publish_address_is_message_class_fqn(context: TestContext) {
         val async = context.async()
 
         val queue = ArrayBlockingQueue<Any>(1)
@@ -65,7 +65,7 @@ class EventBusExtensionsTest : VertxTestBase() {
         async.complete()
     }
 
-    @Test fun sendJsonObject_send_address_is_class_fqn(context: TestContext) {
+    @Test fun sendJsonObject_send_address_is_message_class_fqn(context: TestContext) {
         val async = context.async()
 
         val consumer = eventBus.consumer<JsonObject>(Ping::class.java.name) { message ->

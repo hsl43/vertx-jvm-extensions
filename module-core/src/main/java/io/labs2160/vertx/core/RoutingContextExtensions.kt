@@ -1,9 +1,11 @@
+@file:JvmName("RoutingContextExt")
+
 package io.labs2160.vertx.core
 
 import io.netty.handler.codec.http.HttpResponseStatus
 import io.vertx.core.json.Json
-import io.vertx.ext.web.api.RequestParameters
 import io.vertx.ext.web.RoutingContext
+import io.vertx.ext.web.api.RequestParameters
 
 fun RoutingContext.params(): RequestParameters = this.get<Any>("parsedParameters") as RequestParameters
 

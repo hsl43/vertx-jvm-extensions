@@ -1,3 +1,5 @@
+@file:JvmName("RoutingContextExt")
+
 package io.labs2160.vertx.reactivex
 
 import io.netty.handler.codec.http.HttpResponseStatus

@@ -1,7 +1,9 @@
+@file:JvmName("MessageExt")
+
 package io.labs2160.vertx.core
 
-import io.vertx.core.json.JsonObject
 import io.vertx.core.eventbus.Message
+import io.vertx.core.json.JsonObject
 
 fun <T> Message<T>.replyAsJsonObject(instance: Any) = this.reply(JsonObject.mapFrom(instance))
 

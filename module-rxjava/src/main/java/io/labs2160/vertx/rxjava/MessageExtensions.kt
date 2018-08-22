@@ -1,3 +1,5 @@
+@file:JvmName("MessageExt")
+
 package io.labs2160.vertx.rxjava
 
 import io.vertx.core.json.JsonObject

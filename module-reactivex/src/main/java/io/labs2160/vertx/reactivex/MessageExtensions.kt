@@ -1,3 +1,5 @@
+@file:JvmName("MessageExt")
+
 package io.labs2160.vertx.reactivex
 
 import io.vertx.core.json.JsonObject

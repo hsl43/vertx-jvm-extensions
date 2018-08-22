@@ -1,3 +1,5 @@
+@file:JvmName("EventBusExt")
+
 package io.labs2160.vertx.rxjava
 
 import io.vertx.core.eventbus.DeliveryOptions
