@@ -7,4 +7,11 @@
  * in the user guide at https://docs.gradle.org/4.7/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'vertx-kotlin-extensions'
+rootProject.name = 'vertx-jvm-extensions'
+include 'module-core'
+include 'module-reactivex'
+include 'module-rxjava'
+findProject(':module-core')?.name = 'core'
+findProject(':module-reactivex')?.name = 'reactivex'
+findProject(':module-rxjava')?.name = 'rxjava'
+
