@@ -116,6 +116,8 @@ public class RoutingContextExtensionsTestJ extends VertxTestBase {
     final Map<String,String> headers = null;
 
     final Handler<AsyncResult<HttpResponse<Buffer>>> handler = result -> {
+      route.remove();
+
       if(result.succeeded()) {
         context.assertEquals(OK.code(), result.result().statusCode());
 
@@ -145,6 +147,8 @@ public class RoutingContextExtensionsTestJ extends VertxTestBase {
     final Map<String,String> headers = null;
 
     final Handler<AsyncResult<HttpResponse<Buffer>>> handler = result -> {
+      route.remove();
+
       if(result.succeeded()) {
         final String expected = "{\"name\":\"dummy-name-value\",\"value\":-2147483648}";
 
@@ -176,6 +180,8 @@ public class RoutingContextExtensionsTestJ extends VertxTestBase {
     final Map<String,String> headers = null;
 
     final Handler<AsyncResult<HttpResponse<Buffer>>> handler = result -> {
+      route.remove();
+
       if(result.succeeded()) {
         final String expected = "" +
             "{\n" +
@@ -210,6 +216,8 @@ public class RoutingContextExtensionsTestJ extends VertxTestBase {
     final Map<String,String> headers = null;
 
     final Handler<AsyncResult<HttpResponse<Buffer>>> handler = result -> {
+      route.remove();
+
       if(result.succeeded()) {
         final String expected = "" +
             "{\n" +
