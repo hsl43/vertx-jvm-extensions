@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm'
 }
 
-jar.baseName = 'vertx-ext-reactivex'
+archivesBaseName = 'vertx-ext-reactivex'
 version '0.1.0-SNAPSHOT'
 
 repositories {
