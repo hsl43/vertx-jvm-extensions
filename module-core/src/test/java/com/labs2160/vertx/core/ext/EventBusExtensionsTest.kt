@@ -86,7 +86,7 @@ class EventBusExtensionsTest : VertxTestBase() {
         eventBus.sendJsonObject(Ping(), handler = handler)
     }
 
-    @Test fun rxSendJsonObject_sends_message_as_json_object(context: TestContext) {
+    @Test fun sendJsonObject_sends_message_as_json_object(context: TestContext) {
         val async = context.async()
 
         val consumer = eventBus.consumer<JsonObject>(Ping::class.java.name) { message ->
