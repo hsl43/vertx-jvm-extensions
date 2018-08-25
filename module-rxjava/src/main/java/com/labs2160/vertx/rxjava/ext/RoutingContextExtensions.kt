@@ -38,7 +38,7 @@ fun RoutingContext.respondPretty(status: HttpResponseStatus, body: Any) {
 
 /**
  * Composes an HTTP response with specified [status] code. If supplied, [body]
- * will be serialized as JSON with conditional [pretty] formatting.
+ * will be serialized as JSON with conditionally [pretty] formatting.
  */
 fun RoutingContext.respond(status: HttpResponseStatus, body: Any? = null, pretty: Boolean = false) {
     val response = this.response()
