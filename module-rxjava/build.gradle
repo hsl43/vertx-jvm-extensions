@@ -1,10 +1,23 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
+    }
+}
+
 plugins {
     id 'java-library'
     id 'org.jetbrains.kotlin.jvm'
 }
 
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
 archivesBaseName = 'vertx-ext-rxjava'
-version '0.1.0-SNAPSHOT'
+version '0.1.0'
 
 repositories {
     jcenter()
@@ -19,6 +32,39 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['RxJava1Publication']
+
+    pkg {
+        repo = 'vertx-ext'
+        name = 'com.labs2160.vertx.rxjava.ext'
+        userOrg = 'labs2160'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/hsl43/vertx-jvm-extensions.git'
+
+        version {
+            name = '0.1.0'
+//            desc = 'Gradle Bintray Plugin 1.0 final'  // TODO... optional
+            released = new Date()
+//            vcsTag = '1.3.0'  // TODO... optional
+//            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']  // TODO... optional
+        }
+    }
+}
+
+publishing {
+    publications {
+        RxJava1Publication(MavenPublication) {
+            from components.java
+            groupId 'com.labs2160'
+            artifactId 'vertx-ext-rxjava'
+            version '0.1.0'
+        }
     }
 }
 
