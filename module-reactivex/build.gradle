@@ -59,7 +59,6 @@ bintray {
 
     publish = true
     override = true
-    override = true
 
     pkg {
         repo = 'vertx-ext'
