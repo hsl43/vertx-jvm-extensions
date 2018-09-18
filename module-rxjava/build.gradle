@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
     }
 }
 
@@ -35,17 +35,40 @@ compileTestKotlin {
     }
 }
 
+def bintrayUser
+def bintrayApiKey
+
+File propertiesFile = project.rootProject.file('local.properties')
+
+if(propertiesFile.exists()) {
+    Properties properties = new Properties()
+    properties.load(propertiesFile.newDataInputStream())
+
+    bintrayUser = properties.getProperty('bintray.user')
+    bintrayApiKey = properties.getProperty('bintray.key')
+
+} else {
+    bintrayUser = System.getenv('BINTRAY_USER')
+    bintrayApiKey = System.getenv('BINTRAY_KEY')
+}
+
 bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
+    user = bintrayUser
+    key = bintrayApiKey
     publications = ['RxJava1Publication']
+
+    publish = true
+    override = true
 
     pkg {
         repo = 'vertx-ext'
         name = 'com.labs2160.vertx.rxjava.ext'
         userOrg = 'labs2160'
         licenses = ['Apache-2.0']
+        websiteUrl = 'https://github.com/hsl43/vertx-jvm-extensions'
+        issueTrackerUrl = 'https://github.com/hsl43/vertx-jvm-extensions/issues'
         vcsUrl = 'https://github.com/hsl43/vertx-jvm-extensions.git'
+        publicDownloadNumbers = true
 
         version {
             name = '0.1.0'
