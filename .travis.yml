@@ -1,0 +1,8 @@
+language: java
+
+install: true
+
+script: scripts/build_travis.sh
+
+git:
+  depth: false

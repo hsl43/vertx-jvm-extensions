@@ -1,16 +1,32 @@
 buildscript {
-    ext.kotlin_version = '1.2.60'
-    ext.vertx_version  = '3.5.3'
+  ext.kotlin_version = '1.2.70'
+  ext.vertx_version = '3.5.3'
 
-    repositories {
-        jcenter()
-    }
+  repositories {
+    jcenter()
+  }
 
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
 }
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.2.60'
+  id 'org.jetbrains.kotlin.jvm' version '1.2.60'
+}
+
+task testAll(type: GradleBuild) {
+  tasks = [
+      ':core:test',
+      ':reactivex:test',
+      ':rxjava:test'
+  ]
+}
+
+task bintrayUploadAll(type: GradleBuild, dependsOn: 'testAll') {
+  tasks = [
+      ':core:bintrayUpload',
+      ':reactivex:bintrayUpload',
+      ':rxjava:bintrayUpload'
+  ]
 }

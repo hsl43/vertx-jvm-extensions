@@ -1,16 +1,16 @@
 buildscript {
-    repositories {
-        jcenter()
-    }
+  repositories {
+    jcenter()
+  }
 
-    dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-    }
+  dependencies {
+    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+  }
 }
 
 plugins {
-    id 'java-library'
-    id 'org.jetbrains.kotlin.jvm'
+  id 'java-library'
+  id 'org.jetbrains.kotlin.jvm'
 }
 
 apply plugin: 'com.jfrog.bintray'
@@ -20,19 +20,19 @@ archivesBaseName = 'vertx-ext-reactivex'
 version '0.1.0'
 
 repositories {
-    jcenter()
+  jcenter()
 }
 
 compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
 }
 
 compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
 }
 
 def bintrayUser
@@ -41,65 +41,65 @@ def bintrayApiKey
 File propertiesFile = project.rootProject.file('local.properties')
 
 if(propertiesFile.exists()) {
-    Properties properties = new Properties()
-    properties.load(propertiesFile.newDataInputStream())
+  Properties properties = new Properties()
+  properties.load(propertiesFile.newDataInputStream())
 
-    bintrayUser = properties.getProperty('bintray.user')
-    bintrayApiKey = properties.getProperty('bintray.key')
+  bintrayUser = properties.getProperty('bintray.user')
+  bintrayApiKey = properties.getProperty('bintray.key')
 
 } else {
-    bintrayUser = System.getenv('BINTRAY_USER')
-    bintrayApiKey = System.getenv('BINTRAY_KEY')
+  bintrayUser = System.getenv('BINTRAY_USER')
+  bintrayApiKey = System.getenv('BINTRAY_KEY')
 }
 
 bintray {
-    user = bintrayUser
-    key = bintrayApiKey
-    publications = ['RxJava2Publication']
+  user = bintrayUser
+  key = bintrayApiKey
+  publications = ['RxJava2Publication']
 
-    publish = true
-    override = true
+  publish = true
+  override = true
 
-    pkg {
-        repo = 'vertx-ext'
-        name = 'com.labs2160.vertx.reactivex.ext'
-        userOrg = 'labs2160'
-        licenses = ['Apache-2.0']
-        websiteUrl = 'https://github.com/hsl43/vertx-jvm-extensions'
-        issueTrackerUrl = 'https://github.com/hsl43/vertx-jvm-extensions/issues'
-        vcsUrl = 'https://github.com/hsl43/vertx-jvm-extensions.git'
-        publicDownloadNumbers = true
+  pkg {
+    repo = 'vertx-ext'
+    name = 'com.labs2160.vertx.reactivex.ext'
+    userOrg = 'labs2160'
+    licenses = ['Apache-2.0']
+    websiteUrl = 'https://github.com/hsl43/vertx-jvm-extensions'
+    issueTrackerUrl = 'https://github.com/hsl43/vertx-jvm-extensions/issues'
+    vcsUrl = 'https://github.com/hsl43/vertx-jvm-extensions.git'
+    publicDownloadNumbers = true
 
-        version {
-            name = '0.1.0'
+    version {
+      name = '0.1.0'
 //            desc = 'Gradle Bintray Plugin 1.0 final'  // TODO... optional
-            released = new Date()
+      released = new Date()
 //            vcsTag = '1.3.0'  // TODO... optional
 //            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']  // TODO... optional
-        }
     }
+  }
 }
 
 publishing {
-    publications {
-        RxJava2Publication(MavenPublication) {
-            from components.java
-            groupId 'com.labs2160'
-            artifactId 'vertx-ext-reactivex'
-            version '0.1.0'
-        }
+  publications {
+    RxJava2Publication(MavenPublication) {
+      from components.java
+      groupId 'com.labs2160'
+      artifactId 'vertx-ext-reactivex'
+      version '0.1.0'
     }
+  }
 }
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    api "io.vertx:vertx-core:$vertx_version"
-    api "io.vertx:vertx-web-api-contract:$vertx_version"
-    api "io.vertx:vertx-web-client:$vertx_version"
-    api "io.vertx:vertx-rx-java2:$vertx_version"
-    testImplementation 'junit:junit:4.12'
-    testImplementation "io.vertx:vertx-unit:$vertx_version"
-    testImplementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
-    testImplementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4'
+  api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+  api "io.vertx:vertx-core:$vertx_version"
+  api "io.vertx:vertx-web-api-contract:$vertx_version"
+  api "io.vertx:vertx-web-client:$vertx_version"
+  api "io.vertx:vertx-rx-java2:$vertx_version"
+  testImplementation 'junit:junit:4.12'
+  testImplementation "io.vertx:vertx-unit:$vertx_version"
+  testImplementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+  testImplementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4'
 }
