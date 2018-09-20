@@ -40,7 +40,7 @@ dependencies {
   - [RoutingContext](#routingcontext)
 
 ### EventBus
-
+---
 The `EventBus` extensions are designed to promote canonical usage of JSON
 as a messaging medium, while also reducing the amount of code needed in both 
 multicast and point-to-point messaging scenarios. This is achieved in two ways: 
@@ -58,7 +58,7 @@ address. This alleviates the need for maintaining a separate registry of
 addresses, while also promoting an event-driven approach to messaging.
 
 ### Message
-
+---
 The `Message` extensions are designed to further promote the canonical usage of 
 JSON as a messaging medium. 
 
@@ -68,6 +68,7 @@ Use **`replyAsJsonObject()`** to reply to a `Message` with a body serialized as
 a `JsonObject`.
 
 ### RoutingContext
+---
 The `RoutingContext` extensions introduce more concise, typesafe ways of 
 composing responses to HTTP requests.
 
