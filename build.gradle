@@ -1,14 +1,14 @@
 buildscript {
-  ext.library_version = '1.0.0'
-  ext.kotlin_version = '1.2.70'
-  ext.vertx_version = '3.5.3'
+  ext.libraryVersion = '1.0.0'
+  ext.kotlinVersion = '1.2.70'
+  ext.vertxVersion = '3.5.3'
 
   repositories {
     jcenter()
   }
 
   dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
   }
 }
