@@ -11,7 +11,9 @@ A library of helpers for developing Vert.x applications on the JVM.
 ```groovy
 buildscript {
     repositories {
-        jcenter()
+        maven {
+            url 'https://dl.bintray.com/labs2160/vertx-ext'
+        }
     }
 }
 
