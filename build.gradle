@@ -1,20 +1,53 @@
 buildscript {
-  ext.libraryVersion = '1.0.0'
-  ext.kotlinVersion = '1.2.70'
-  ext.vertxVersion = '3.5.3'
+  ext.library_version = '1.1.0'
+  ext.kotlin_version  = '1.3.0'
+  ext.vertx_version   = '3.5.3'
 
   repositories {
     jcenter()
   }
 
   dependencies {
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
   }
 }
 
-plugins {
-  id 'org.jetbrains.kotlin.jvm' version '1.2.60'
+subprojects {
+  apply plugin: 'java-library'
+  apply plugin: 'kotlin'
+  apply plugin: 'com.jfrog.bintray'
+  apply plugin: 'maven-publish'
+  apply from: "$rootDir/bintray.gradle"
+
+  version "$library_version"
+
+  repositories {
+    jcenter()
+  }
+
+  compileKotlin {
+    kotlinOptions {
+      jvmTarget = "1.8"
+    }
+  }
+
+  compileTestKotlin {
+    kotlinOptions {
+      jvmTarget = "1.8"
+    }
+  }
+
+  dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    api "io.vertx:vertx-core:$vertx_version"
+    api "io.vertx:vertx-web-api-contract:$vertx_version"
+    api "io.vertx:vertx-web-client:$vertx_version"
+    testImplementation 'junit:junit:4.12'
+    testImplementation "io.vertx:vertx-unit:$vertx_version"
+    testImplementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4'
+  }
 }
 
 task testAll(type: GradleBuild) {
@@ -25,7 +58,10 @@ task testAll(type: GradleBuild) {
   ]
 }
 
-task bintrayUploadAll(type: GradleBuild, dependsOn: 'testAll') {
+task bintrayUploadAll(
+    type: GradleBuild,
+    dependsOn: ['testAll', ':core:testHelpersJar', ':reactivex:testHelpersJar', ':rxjava:testHelpersJar']) {
+
   tasks = [
       ':core:bintrayUpload',
       ':reactivex:bintrayUpload',
