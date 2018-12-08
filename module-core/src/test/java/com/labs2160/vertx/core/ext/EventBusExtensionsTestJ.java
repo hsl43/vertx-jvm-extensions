@@ -1,5 +1,6 @@
 package com.labs2160.vertx.core.ext;
 
+import com.labs2160.vertx.core.ext.test.VertxTestBase;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.eventbus.DeliveryOptions;

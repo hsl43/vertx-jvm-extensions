@@ -1,5 +1,6 @@
 package com.labs2160.vertx.reactivex.ext
 
+import com.labs2160.vertx.reactivex.ext.test.VertxTestBase
 import io.reactivex.rxkotlin.subscribeBy
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.unit.TestContext

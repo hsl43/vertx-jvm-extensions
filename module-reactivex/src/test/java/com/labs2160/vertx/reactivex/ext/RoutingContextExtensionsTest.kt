@@ -1,5 +1,6 @@
 package com.labs2160.vertx.reactivex.ext
 
+import com.labs2160.vertx.reactivex.ext.test.VertxTestBase
 import io.netty.handler.codec.http.HttpResponseStatus.OK
 import io.reactivex.rxkotlin.subscribeBy
 import io.vertx.core.http.HttpMethod

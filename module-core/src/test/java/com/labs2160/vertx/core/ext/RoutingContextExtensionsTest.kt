@@ -1,5 +1,6 @@
 package com.labs2160.vertx.core.ext
 
+import com.labs2160.vertx.core.ext.test.VertxTestBase
 import io.netty.handler.codec.http.HttpResponseStatus.OK
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler

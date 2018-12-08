@@ -1,5 +1,6 @@
 package com.labs2160.vertx.rxjava.ext
 
+import com.labs2160.vertx.rxjava.ext.test.VertxTestBase
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.unit.TestContext
 import io.vertx.ext.unit.junit.VertxUnitRunner

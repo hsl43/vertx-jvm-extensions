@@ -1,4 +1,4 @@
-package com.labs2160.vertx.core.ext
+package com.labs2160.vertx.core.ext.test
 
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -18,8 +18,10 @@ abstract class VertxTestBase {
     protected lateinit var vertx: Vertx
     protected lateinit var router: Router
     protected lateinit var eventBus: EventBus
+    protected lateinit var server: HttpServer
+    protected lateinit var client: WebClient
 
-    private val listenPort by lazy {
+    protected val listenPort by lazy {
         val socket = ServerSocket(0)
 
         val port = socket.localPort
@@ -28,9 +30,6 @@ abstract class VertxTestBase {
 
         port
     }
-
-    private lateinit var server: HttpServer
-    private lateinit var client: WebClient
 
     open fun setUp(context: TestContext) {
         vertx = Vertx.vertx().exceptionHandler(context.exceptionHandler())
@@ -70,6 +69,7 @@ abstract class VertxTestBase {
 
         val request = when(method) {
             HttpMethod.GET    -> client.get    (listenPort, "localhost", path)
+            HttpMethod.HEAD   -> client.head   (listenPort, "localhost", path)
             HttpMethod.POST   -> client.post   (listenPort, "localhost", path)
             HttpMethod.PUT    -> client.put    (listenPort, "localhost", path)
             HttpMethod.DELETE -> client.delete (listenPort, "localhost", path)
