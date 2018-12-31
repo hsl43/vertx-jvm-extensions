@@ -1,6 +1,6 @@
 package com.labs2160.vertx.reactivex.ext;
 
-import com.labs2160.vertx.reactivex.ext.test.VertxTestBase;
+import com.labs2160.vertx.reactivex.ext.test.VertxIntegrationTest;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
@@ -21,7 +21,7 @@ import java.util.Map;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
 @RunWith(VertxUnitRunner.class)
-public class RoutingContextExtensionsTestJ extends VertxTestBase {
+public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
 
   static class FakeBody {
     private final String name;

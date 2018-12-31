@@ -1,6 +1,6 @@
 package com.labs2160.vertx.core.ext
 
-import com.labs2160.vertx.core.ext.test.VertxTestBase
+import com.labs2160.vertx.core.ext.test.VertxIntegrationTest
 import io.netty.handler.codec.http.HttpResponseStatus.OK
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -17,7 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(VertxUnitRunner::class)
-class RoutingContextExtensionsTest : VertxTestBase() {
+class RoutingContextExtensionsTest : VertxIntegrationTest() {
     private data class FakeBody(val name: String, val value: Int)
 
     @Before override fun setUp(context: TestContext) {
