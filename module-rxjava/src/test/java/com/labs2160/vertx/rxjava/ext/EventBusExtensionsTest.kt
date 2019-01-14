@@ -1,6 +1,6 @@
 package com.labs2160.vertx.rxjava.ext
 
-import com.labs2160.vertx.rxjava.ext.test.VertxIntegrationTest
+import com.labs2160.vertx.rxjava.ext.test.VertxPlatform
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.unit.TestContext
 import io.vertx.ext.unit.junit.VertxUnitRunner
@@ -12,7 +12,7 @@ import rx.lang.kotlin.subscribeBy
 import java.util.concurrent.ArrayBlockingQueue
 
 @RunWith(VertxUnitRunner::class)
-class EventBusExtensionsTest : VertxIntegrationTest() {
+class EventBusExtensionsTest : VertxPlatform() {
     private data class Ping(val value: String = "Ping?")
     private data class Pong(val value: String = "Pong!")
 

@@ -1,6 +1,6 @@
 package com.labs2160.vertx.core.ext;
 
-import com.labs2160.vertx.core.ext.test.VertxIntegrationTest;
+import com.labs2160.vertx.core.ext.test.VertxPlatform;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.eventbus.DeliveryOptions;
@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.ArrayBlockingQueue;
 
 @RunWith(VertxUnitRunner.class)
-public class EventBusExtensionsTestJ extends VertxIntegrationTest {
+public class EventBusExtensionsTestJ extends VertxPlatform {
 
   static class Ping {
     private final String value = "Ping?";

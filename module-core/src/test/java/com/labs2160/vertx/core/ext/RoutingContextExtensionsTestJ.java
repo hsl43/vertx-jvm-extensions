@@ -1,6 +1,6 @@
 package com.labs2160.vertx.core.ext;
 
-import com.labs2160.vertx.core.ext.test.VertxIntegrationTest;
+import com.labs2160.vertx.core.ext.test.VertxPlatform;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
@@ -25,7 +25,7 @@ import java.util.Map;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
 @RunWith(VertxUnitRunner.class)
-public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
+public class RoutingContextExtensionsTestJ extends VertxPlatform {
 
   static class FakeBody {
     private final String name;
@@ -98,7 +98,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
 
     };
 
-    testRequest(HttpMethod.GET, path, requestBody, headers, handler);
+    testRequest(HttpMethod.GET, path, null, requestBody, headers, handler);
   }
 
   @Test
@@ -129,7 +129,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
       }
     };
 
-    testRequest(HttpMethod.GET, path, requestBody, headers, handler);
+    testRequest(HttpMethod.GET, path, null, requestBody, headers, handler);
   }
 
   @Test
@@ -162,7 +162,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
       }
     };
 
-    testRequest(HttpMethod.GET, path, requestBody, headers, handler);
+    testRequest(HttpMethod.GET, path, null, requestBody, headers, handler);
   }
 
   @Test
@@ -199,7 +199,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
       }
     };
 
-    testRequest(HttpMethod.GET, path, requestBody, headers, handler);
+    testRequest(HttpMethod.GET, path, null, requestBody, headers, handler);
   }
 
   @Test
@@ -235,7 +235,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
       }
     };
 
-    testRequest(HttpMethod.GET, path, requestBody, headers, handler);
+    testRequest(HttpMethod.GET, path, null, requestBody, headers, handler);
   }
 
 }

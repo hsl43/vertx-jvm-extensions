@@ -14,7 +14,7 @@ import io.vertx.ext.web.client.WebClient
 import io.vertx.ext.web.handler.BodyHandler
 import java.net.ServerSocket
 
-abstract class VertxIntegrationTest {
+abstract class VertxPlatform {
   protected lateinit var vertx: Vertx
   protected lateinit var router: Router
   protected lateinit var eventBus: EventBus
@@ -62,17 +62,25 @@ abstract class VertxIntegrationTest {
   fun testRequest(
       method: HttpMethod,
       path: String,
+      params: Map<String,Any>? = null,
       body: Any? = null,
       headers: Map<String, String>? = null,
       handler: Handler<AsyncResult<HttpResponse<Buffer>>>
   ) {
 
+    var pathWithBindValues = path
+
+    if(params?.isNotEmpty() == true) {
+      params.forEach { key, value -> pathWithBindValues = key.toRegex().replace(pathWithBindValues, "/$value") }
+    }
+
     val request = when (method) {
-         HttpMethod.GET -> client.get   (listenPort, "localhost", path)
-        HttpMethod.HEAD -> client.head  (listenPort, "localhost", path)
-        HttpMethod.POST -> client.post  (listenPort, "localhost", path)
-         HttpMethod.PUT -> client.put   (listenPort, "localhost", path)
-      HttpMethod.DELETE -> client.delete(listenPort, "localhost", path)
+         HttpMethod.GET -> client.get   (listenPort, "localhost", pathWithBindValues)
+        HttpMethod.HEAD -> client.head  (listenPort, "localhost", pathWithBindValues)
+       HttpMethod.PATCH -> client.patch (listenPort, "localhost", pathWithBindValues)
+        HttpMethod.POST -> client.post  (listenPort, "localhost", pathWithBindValues)
+         HttpMethod.PUT -> client.put   (listenPort, "localhost", pathWithBindValues)
+      HttpMethod.DELETE -> client.delete(listenPort, "localhost", pathWithBindValues)
                    else -> throw IllegalArgumentException("Unexpected value for HttpMethod [$method]")
     }
 

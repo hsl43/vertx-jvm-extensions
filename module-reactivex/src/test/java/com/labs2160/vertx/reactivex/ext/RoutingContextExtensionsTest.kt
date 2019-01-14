@@ -1,6 +1,6 @@
 package com.labs2160.vertx.reactivex.ext
 
-import com.labs2160.vertx.reactivex.ext.test.VertxIntegrationTest
+import com.labs2160.vertx.reactivex.ext.test.VertxPlatform
 import io.netty.handler.codec.http.HttpResponseStatus.OK
 import io.reactivex.rxkotlin.subscribeBy
 import io.vertx.core.http.HttpMethod
@@ -14,7 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(VertxUnitRunner::class)
-class RoutingContextExtensionsTest : VertxIntegrationTest() {
+class RoutingContextExtensionsTest : VertxPlatform() {
     private data class FakeBody(val name: String, val value: Int)
 
     @Before override fun setUp(context: TestContext) {

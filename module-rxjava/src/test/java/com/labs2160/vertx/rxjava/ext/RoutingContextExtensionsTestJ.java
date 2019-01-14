@@ -1,6 +1,6 @@
 package com.labs2160.vertx.rxjava.ext;
 
-import com.labs2160.vertx.rxjava.ext.test.VertxIntegrationTest;
+import com.labs2160.vertx.rxjava.ext.test.VertxPlatform;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
@@ -21,7 +21,7 @@ import java.util.Map;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
 @RunWith(VertxUnitRunner.class)
-public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
+public class RoutingContextExtensionsTestJ extends VertxPlatform {
 
   static class FakeBody {
     private final String name;
@@ -83,7 +83,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
     final Map<String,String> headers = new HashMap<>();
     headers.put("_header", "HEADER_VALUE");
 
-    testRequest(HttpMethod.GET, path, requestBody, headers)
+    testRequest(HttpMethod.GET, path, null, requestBody, headers)
         .doOnError(error -> route.remove())
         .doOnSuccess(response -> route.remove())
         .subscribe(
@@ -111,7 +111,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
     final Object requestBody = null;
     final Map<String,String> headers = null;
 
-    testRequest(HttpMethod.GET, path, requestBody, headers)
+    testRequest(HttpMethod.GET, path, null, requestBody, headers)
         .doOnError(error -> route.remove())
         .doOnSuccess(response -> route.remove())
         .subscribe(
@@ -141,7 +141,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
     final Object requestBody = null;
     final Map<String,String> headers = null;
 
-    testRequest(HttpMethod.GET, path, requestBody, headers)
+    testRequest(HttpMethod.GET, path, null, requestBody, headers)
         .doOnError(error -> route.remove())
         .doOnSuccess(response -> route.remove())
         .subscribe(
@@ -173,7 +173,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
     final Object requestBody = null;
     final Map<String,String> headers = null;
 
-    testRequest(HttpMethod.GET, path, requestBody, headers)
+    testRequest(HttpMethod.GET, path, null, requestBody, headers)
         .doOnError(error -> route.remove())
         .doOnSuccess(response -> route.remove())
         .subscribe(
@@ -208,7 +208,7 @@ public class RoutingContextExtensionsTestJ extends VertxIntegrationTest {
     final Object requestBody = null;
     final Map<String,String> headers = null;
 
-    testRequest(HttpMethod.GET, path, requestBody, headers)
+    testRequest(HttpMethod.GET, path, null, requestBody, headers)
         .doOnError(error -> route.remove())
         .doOnSuccess(response -> route.remove())
         .subscribe(
