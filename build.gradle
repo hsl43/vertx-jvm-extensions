@@ -1,7 +1,7 @@
 buildscript {
-  ext.library_version = '1.4.0'
-  ext.kotlin_version  = '1.3.10'
-  ext.vertx_version   = '3.5.4'
+  ext.library_version = '1.5.0'
+  ext.kotlin_version  = '1.3.31'
+  ext.vertx_version   = '3.6.0'
 
   repositories {
     jcenter()
@@ -45,7 +45,7 @@ subprojects {
     api "io.vertx:vertx-web-client:$vertx_version"
     testImplementation 'junit:junit:4.12'
     testImplementation "io.vertx:vertx-unit:$vertx_version"
-    testImplementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.4'
+    testImplementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8'
   }
 }
 
